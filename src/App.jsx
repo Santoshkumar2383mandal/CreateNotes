@@ -1,46 +1,42 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Home from "./components/Home"
+import Paste from "./components/Paste"
+import ViewPaste from "./components/ViewPaste"
+import Navbar from "./components/Navbar"
 
-import Navbar from './assets/components/Navbar';
-import ViewPaste from './assets/components/ViewPaste';
-import Home from './assets/components/Home'; // Ensure this path is correct
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <div>
-        <Navbar />
-        <Home />
+const router = createBrowserRouter(
+  [
+    {
+      path:"/",
+      element:
+      <div className="w-full h-full flex flex-col">
+        <Navbar/>
+        <Home/>
       </div>
-    ),
-  },
-  {
-    path: "/pastes",
-    element: (
-      <div>
-        <Navbar />
-        <Home />
-      </div>
-    ),
-  },
-  {
-    path: "/pastes/:id",
-    element: (
-      <div>
-        <Navbar />
-        <ViewPaste />
-      </div>
-    ),
-  },
-]);
+    },
+    {
+      path:"/pastes",
+      element: <div className="w-full h-full flex flex-col">
+      <Navbar/>
+      <Paste/>
+    </div>
+    },
+    {
+      path:"/pastes/:id",
+      element: <div className="w-full h-full flex flex-col">
+      <Navbar/>
+      <ViewPaste/>
+    </div>,
+    }
+  ]
+)
 
 function App() {
+
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
+    <RouterProvider router={router}/>
+  )
 }
 
-export default App;
+export default App
