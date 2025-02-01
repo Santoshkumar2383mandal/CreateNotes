@@ -1,16 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import Navbar from './assets/components/Navbar';
+import ViewPaste from './assets/components/ViewPaste';
+import Home from './assets/components/Home'; // Ensure this path is correct
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <Navbar />
+        <Home />
+      </div>
+    ),
+  },
+  {
+    path: "/pastes",
+    element: (
+      <div>
+        <Navbar />
+        <Home />
+      </div>
+    ),
+  },
+  {
+    path: "/pastes/:id",
+    element: (
+      <div>
+        <Navbar />
+        <ViewPaste />
+      </div>
+    ),
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Create Online Notes</h1>
-    </>
-  )
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
-export default App
+export default App;
